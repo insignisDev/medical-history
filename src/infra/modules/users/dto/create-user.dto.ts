@@ -1,4 +1,4 @@
-import { IsDateString, IsEmail, IsString, MinLength } from 'class-validator'
+import { IsISO8601, IsEmail, IsString, MinLength } from 'class-validator'
 
 export class CreateUserDto {
   @IsString()
@@ -7,8 +7,8 @@ export class CreateUserDto {
   @IsEmail()
   email!: string
 
-  @IsDateString()
-  birth!: Date
+  @IsISO8601()
+  birth!: string
 
   @IsString()
   @MinLength(6)
