@@ -1,14 +1,14 @@
 import { container } from 'tsyringe'
 import { useContainer } from 'routing-controllers'
-import { UsersService } from '@/infra/modules/users/interfaces'
 import { TsyringeAdapter } from '@/infra/adapters'
-import { UsersServiceImpl } from '@/infra/modules/users/users.service'
+import { CreateUserUseCase } from '@/application/users/use-cases/create-user-use-case'
+import { CREATE_USER_USE_CASE } from '@/infra/modules/users/contants'
 
 export const setupContainer = async (): Promise<void> => {
   useContainer(new TsyringeAdapter(container))
 
-  container.registerSingleton<UsersService>(
-    'UsersService',
-    UsersServiceImpl
+  container.registerSingleton<CreateUserUseCase>(
+    CREATE_USER_USE_CASE,
+    CreateUserUseCase
   )
 }
